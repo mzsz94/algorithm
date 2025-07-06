@@ -28,8 +28,7 @@ lst_num.append(num)
 # cal
 sign = sign[::-1]
 lst_num = lst_num[::-1]
-print(sign)
-print(lst_num)
+
 ans = lst_num[0]
 
 operand = 1
