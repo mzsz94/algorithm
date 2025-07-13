@@ -1,10 +1,3 @@
-import sys
-
-sys.stdin = open("./sujin_love_manjae.txt",'r')
-N = int(input())
-factory = [list(map(int, input().split(' '))) for _ in range(N)]
-print(factory)
-
 def solution(factory):
   """
   factory: List of lists, factory[i][j] == 1 이면
@@ -22,33 +15,35 @@ def solution(factory):
         parts[i].append(no_p)
     i += 1
 
-  print("DBG = ")
-  print(parts)
+  #print("DBG = ")
+  #print(parts)
   best = [N + 1]                   # 최소 부품 수 (mutable)
 
   def dfs(used, done):
-    if used > best[0]:
+    if used >= best[0]:
       return
+    
     if done == N:
+      best[0] = used
       return
     
     f = 0
     while visited[f]:
       f += 1
     
-    for i in parts[f]:
+    for p in parts[f]:
       lst = []
-      if not visited[i]:
-        if factory[f][i] == 1:
-          lst.append(i)
+      for i in range(N):
+        if not visited[i]:
+          if factory[i][p] == 1:
+            visited[i] = 1
+            lst.append(i)
         
-        dfs(used+1, done+len(lst))
+      dfs(used+1, done+len(lst))
     
-    for i in lst:
-      visited[i] = 0
+      for i in lst:
+        visited[i] = 0
 
 
   dfs(0, 0)
-  return best[0]
-
-solution(factory)
+  return bestt[0]
