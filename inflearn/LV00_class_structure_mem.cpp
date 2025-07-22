@@ -7,7 +7,10 @@ class cPeople
     public:
         int age;
         int height;
-    private:
+        void AddAge()
+        {
+            age += 1;
+        }    
         char name[20];
 };
 
@@ -36,5 +39,9 @@ int main()
 
     cPeople manjae;
     manjae.age = 30;
+    strcpy(manjae.name, "ManjaeCho");
+    manjae.AddAge();
+    cout << "Manjae's age: " << manjae.age << endl;
+
     return 0;
 }
